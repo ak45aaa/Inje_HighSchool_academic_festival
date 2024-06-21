@@ -1,0 +1,14 @@
+digraph {
+	rankdir=LR
+	dense1 [label="Dense(Perceptron)"]
+	dr1 [label=Dropout]
+	dense2 [label=Dense]
+	dr2 [label=Dropout]
+	dense3 [label=Dense]
+	last [label="Dense(Classifier node)"]
+	dense1 -> dr1
+	dr1 -> dense2
+	dense2 -> dr2
+	dr2 -> dense3
+	dense3 -> last
+}

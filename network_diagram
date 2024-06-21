@@ -1,0 +1,31 @@
+digraph {
+	graph [rankdir=LR]
+	subgraph cluster_convolution_layer {
+		image [label=Image]
+		conv1 [label=Convolution1]
+		activation1 [label=Activation1]
+		maxp1 [label=MaxPooling1]
+		conv2 [label=Convolution2]
+		activation2 [label=Activation2]
+		maxp2 [label=MaxPooling2]
+		flatten [label=Flatten]
+		label="Feature Extraction (CNN process)"
+	}
+	subgraph cluster_dnn_layer {
+		fc [label=FC_layer]
+		fc_ac [label=Softmax]
+		label="Feature Classification" rank=same
+		node [shape=box]
+	}
+	output [label=Output]
+	image -> conv1
+	conv1 -> activation1
+	activation1 -> maxp1
+	maxp1 -> conv2
+	conv2 -> activation2
+	activation2 -> maxp2
+	maxp2 -> flatten
+	flatten -> fc
+	fc -> fc_ac
+	fc_ac -> output
+}
